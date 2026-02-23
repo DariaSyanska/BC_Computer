@@ -1,0 +1,42 @@
+name: Data Schema Code Convention
+
+# Події, що запускають перевірку (push та pull request у вашу гілку)
+on:
+  push:
+    branches: [ main, laboratory-work-4 ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  JSONLinter:
+    # Використання Docker-контейнеру з Ubuntu [cite: 718]
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Клонування репозиторію на віртуальну машину [cite: 1087]
+      - name: Checkout Code in Repository
+        uses: actions/checkout@v3
+
+      # 2. Встановлення Node.js (необхідно для роботи jsonlint)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 3. Встановлення лінтеру jsonlint [cite: 1123]
+      - name: Install JSON Linter
+        run: npm install -g @prantlf/jsonlint
+
+      # 4. Запуск перевірки вашого файлу [cite: 1125]
+      - name: Run JSON Linter
+        run: jsonlint 2-SoftwareDesign/2.4-DetailedDataSchema/JSON_DetailedDataSchema.json
+
+      # 5. Виведення версій ПЗ (пункт 2.3.1 завдання) [cite: 930-931, 1260]
+      - name: Print Software Versions
+        run: |
+          echo "Operating System version:"
+          lsb_release -a
+          echo "Node.js version:"
+          node --version
+          echo "NPM version:"
+          npm --version

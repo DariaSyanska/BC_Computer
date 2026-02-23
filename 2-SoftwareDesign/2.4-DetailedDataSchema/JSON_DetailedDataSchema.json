@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Writer Assistant Detailed Schema",
+  "description": "Деталізована схема даних для помічника письменника (Варіант 8)",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "description": "Електронна пошта користувача",
+      "type": "string",
+      "format": "email"
+    },
+    "word_count_kpi": {
+      "description": "Цільова кількість слів на добу",
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 10000
+    },
+    "text_content": {
+      "description": "Текст художнього твору",
+      "type": "string",
+      "pattern": "^[A-ZА-ЯІЇЄ].*",
+      "minLength": 1
+    },
+    "bedtime": {
+      "description": "Час засинання (формат HH:mm)",
+      "type": "string",
+      "pattern": "^([01]\\d|2[0-3]):([0-5]\\d)$"
+    }
+  },
+  "required": ["user_email", "word_count_kpi", "text_content"]
+}
