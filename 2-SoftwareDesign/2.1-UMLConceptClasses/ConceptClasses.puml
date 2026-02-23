@@ -1,0 +1,24 @@
+@startuml
+title Концептуальна діаграма класів (Варіант 8)
+
+class User {
+}
+
+class WorkText {
+    +content
+    +wordCountKPI
+}
+
+class SleepSchedule {
+    +bedtime
+    +wakeUpTime
+}
+
+class SafetySystem {
+    +stretchReminders
+}
+
+User "1" -- "*" WorkText : створює
+User "1" -- "1" SleepSchedule : налаштовує
+User "1" -- "1" SafetySystem : використовує
+@enduml

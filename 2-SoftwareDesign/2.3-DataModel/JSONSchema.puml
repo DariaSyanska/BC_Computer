@@ -1,0 +1,14 @@
+@startjson
+{
+  "user_id": "integer",
+  "sleep_settings": {
+    "bedtime": "string (time)",
+    "wake_up": "string (time)"
+  },
+  "work_settings": {
+    "kpi_goal": "integer",
+    "auto_save": "boolean"
+  },
+  "content": "string (text)"
+}
+@endjson
