@@ -1,0 +1,29 @@
+@startuml
+
+title UML Program Classes Diagram (Variant 8)
+
+class User {
+    - String userEmail
+    - String userPassword
+    - Integer wordCountKPI
+    + login()
+    + checkProgress()
+}
+
+class TextContent {
+    - String title
+    - String content
+    - User author
+    + updateContent()
+}
+
+class Notification {
+    + String message
+    - DateTime timestamp
+    + sendAlert()
+}
+
+User "1" -- "*" TextContent : creates
+User "1" -- "*" Notification : receives
+
+@enduml

@@ -12,3 +12,5 @@
 | | author | User | Private (-) | Автор (посилання на клас User) |
 | **Notification**| message | String | Public (+) | Текст повідомлення |
 | | timestamp | DateTime | Private (-) | Час генерації |
+
+![](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/DariaSyanska/BC_Computer/laboratory-work-5/2-SoftwareDesign/2.6-UMLProgramClasses/UMLProgramClasses.puml)
