@@ -1,0 +1,72 @@
+@startuml
+
+class Writer {
+    - id: Integer
+    - name: String
+    - email: String
+    + saveDraft(): void
+    + viewStatistics(): void
+    + viewCreativePlan(): void
+    + getAchievements(): List<Award>
+}
+
+class HealthData {
+    - sleepTime: Integer
+    - sleepPhases: String
+    - stressLevel: Integer
+    - heartRate: Integer
+    + analyzeStressLevel(): Integer
+    + analyzeRestQuality(): String
+    + fetchDataFromService(): void
+}
+
+class CreativeProject {
+    - id: Integer
+    - title: String
+    - description: String
+    + addChapter(chapter: Chapter): void
+    + calculateTotalWordCount(): Integer
+    + getProjectStats(): String
+}
+
+class Chapter {
+    - id: Integer
+    - title: String
+    - content: String
+    - wordCount: Integer
+    + saveDraft(): void
+    + updateWordCount(): void
+}
+
+class CreativePlan {
+    - dailyWordCountGoal: Integer
+    - currentProgress: Integer
+    - startDate: Date
+    - endDate: Date
+    + adjustGoal(stressLevel: Integer): void
+    + trackProgress(): Float
+}
+
+class Award {
+    - id: Integer
+    - name: String
+    - description: String
+    - dateEarned: Date
+    + shareToSocialMedia(): void
+}
+
+class LaborSafetyManual {
+    - content: String
+    - lastUpdated: Date
+    + getErgonomicsTips(): List<String>
+}
+
+Writer "1" -- "1" CreativePlan : has
+Writer "1" -- "0..*" CreativeProject : owns
+Writer "1" -- "0..*" HealthData : records
+Writer "1" -- "0..*" Award : earns
+Writer "1" -- "0..*" LaborSafetyManual : reads
+CreativeProject "1" *-- "1..*" Chapter : consists of
+CreativePlan ..> HealthData : depends on
+
+@enduml
