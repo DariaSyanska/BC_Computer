@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Письменник" as Writer
+actor "Зовнішній сервіс моніторингу здоров'я" as HealthService <<Service>>
+actor "Адміністратор бази знань" as Admin
+
+rectangle "Помічник письменника" {
+  usecase "UC-1: Аналіз якості відпочинку" as UC1
+  usecase "UC-2: Ознайомлення з нормами безпеки праці" as UC2
+  usecase "UC-3: Управління творчими проєктами" as UC3
+  usecase "UC-4: Моніторинг особистих досягнень" as UC4
+  usecase "UC-5: Коригування творчого плану" as UC5
+
+  Writer -- UC1
+  Writer -- UC2
+  Writer -- UC3
+  Writer -- UC4
+  Writer -- UC5
+
+  HealthService -- UC1
+  
+  Admin -- UC2
+  Admin -- UC4
+
+  UC5 ..> UC1 : <<include>>
+}
+@enduml
